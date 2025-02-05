@@ -8,16 +8,23 @@ run = ["sh", "-c", "python app.py"]
 
 [[ports]]
 localPort = 4000
-externalPort = 3000
+externalPort = 8080
 
 [[ports]]
 localPort = 5000
-externalPort = 5000
-
-[[ports]]
-localPort = 6000
 externalPort = 6000
 
 [[ports]]
+localPort = 6000
+externalPort = 9000
+
+[[ports]]
+localPort = 7000
+externalPort = 3000
+
+[[ports]]
 localPort = 8080
+
+[[ports]]
+localPort = 9000
 externalPort = 80

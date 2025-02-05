@@ -19,7 +19,6 @@
         <a href="#contact" class="hover:text-gray-200 transition-all">Contact</a>
       </nav>
       <button class="md:hidden text-white">
-        <!-- Mobile menu toggle -->
         <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor" class="w-6 h-6">
           <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16m-7 6h7" />
         </svg>
@@ -28,16 +27,15 @@
   </header>
 
   <!-- Hero Section -->
-  <section class="bg-cover bg-center h-[90vh] text-center flex flex-col justify-center items-center relative" style="background-image: url('{{ url_for('static', filename='jovianimg.avif') }}');">
-    <!-- Overlay for blurred effect -->
-    <div class="absolute inset-0 bg-black/30 blur-sm"></div>
-    <div class="relative z-10">
-      <h2 class="text-5xl md:text-20xl font-bold text-white drop-shadow-lg hover:text-blue-400 transition-all duration-300">Start Your Career Journey Today</h2>
-      <p class="text-lg md:text-2xl text-white mt-4 max-w-lg mx-auto hover:text-blue-200 transition-all duration-300">
+  <section class="bg-cover bg-center h-[90vh] flex flex-col justify-center items-center relative" style="background-image: url('{{ url_for('static', filename='jovianimg.avif') }}');">
+    <div class="absolute inset-0 bg-black/30"></div>
+    <div class="relative z-10 text-center">
+      <h2 class="text-5xl font-bold text-white drop-shadow-lg">Start Your Career Journey Today</h2>
+      <p class="text-lg text-white mt-4 max-w-xl mx-auto">
         Discover your next career opportunity and take the first step toward a brighter future with Jovian Careers.
       </p>
       <br>
-      <a href="#jobs" class="bg-blue-600 text-white px-10 py-5 rounded-lg mt-6 hover:bg-blue-700 transition-all duration-300 text-lg font-semibold">
+      <a href="#jobs" class="bg-blue-800 text-white px-10 py-5 rounded-lg mt-6 hover:bg-blue-700 transition-all duration-300 font-semibold">
         Find Your Dream Job
       </a>
     </div>
@@ -48,61 +46,49 @@
     <div class="container mx-auto text-center">
       <h3 class="text-3xl font-bold mb-6">About Jovian Careers</h3>
       <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-        Jovian Careers is a platform designed to connect talented individuals with top companies worldwide. 
-        Whether you're looking for your first job or a new opportunity, we offer an array of career options tailored to your goals.
+        Jovian Careers is a platform designed to connect talented individuals with top companies worldwide. Whether you're looking for your first job or a new opportunity, we offer an array of career options tailored to your goals.
       </p>
     </div>
   </section>
 
   <!-- Jobs Section -->
   <section id="jobs" class="py-16 bg-gray-100">
-    <div class="container mx-auto text-center">
+    <div class="container mx-auto">
       <h3 class="text-3xl font-bold text-center mb-10">Explore Our Featured Job Openings</h3>
       <div class="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
-        <!-- Job Card -->
+        {% for job in jobs %}
         <div class="bg-white shadow-lg rounded-lg p-6 hover:shadow-xl transition-all transform hover:scale-105">
-          <h4 class="text-xl font-bold mb-2 hover:text-blue-600 transition-all">Software Engineer</h4>
-          <p class="text-gray-600">Location: Remote</p>
-          <p class="text-gray-600">Experience: 2+ years</p>
-          <a href="#apply" class="text-blue-600 font-semibold mt-4 block hover:underline transition-all">Apply Now</a>
+          <h4 class="text-xl font-bold mb-2 hover:text-blue-600">{{ job.title }}</h4>
+          <p class="text-gray-600">Location: {{ job.location }}</p>
+          <p class="text-gray-600">Experience: {{ job.experience }}</p>
+          <a href="#apply" class="text-blue-600 font-semibold mt-4 block hover:underline">Apply Now</a>
         </div>
-        <!-- Job Card -->
-        <div class="bg-white shadow-lg rounded-lg p-6 hover:shadow-xl transition-all transform hover:scale-105">
-          <h4 class="text-xl font-bold mb-2 hover:text-blue-600 transition-all">UI/UX Designer</h4>
-          <p class="text-gray-600">Location: New York</p>
-          <p class="text-gray-600">Experience: 3+ years</p>
-          <a href="#apply" class="text-blue-600 font-semibold mt-4 block hover:underline transition-all">Apply Now</a>
-        </div>
-        <!-- Job Card -->
-        <div class="bg-white shadow-lg rounded-lg p-6 hover:shadow-xl transition-all transform hover:scale-105">
-          <h4 class="text-xl font-bold mb-2 hover:text-blue-600 transition-all">Data Scientist</h4>
-          <p class="text-gray-600">Location: London</p>
-          <p class="text-gray-600">Experience: 4+ years</p>
-          <a href="#apply" class="text-blue-600 font-semibold mt-4 block hover:underline transition-all">Apply Now</a>
-        </div>
+        {% endfor %}
       </div>
     </div>
   </section>
 
-  <!-- Application Form Section -->
+  <!-- Application Form -->
   <section id="apply" class="py-16 bg-gray-50">
     <div class="container mx-auto text-center">
       <h3 class="text-3xl font-bold mb-6">Apply for a Job</h3>
-      <form class="max-w-lg mx-auto space-y-6 bg-white p-8 rounded-lg shadow-lg">
+      <form class="max-w-lg mx-auto bg-white p-8 rounded-lg shadow-lg space-y-6">
         <div>
           <label for="name" class="block text-gray-700">Full Name</label>
-          <input type="text" id="name" class="w-full p-3 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter your full name" required>
+          <input type="text" id="name" name="name" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter your full name" required>
         </div>
         <div>
           <label for="email" class="block text-gray-700">Email Address</label>
-          <input type="email" id="email" class="w-full p-3 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter your email" required>
+          <input type="email" id="email" name="email" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Enter your email" required>
         </div>
         <div>
           <label for="message" class="block text-gray-700">Cover Letter</label>
-          <textarea id="message" class="w-full p-3 mt-2 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" placeholder="Write your cover letter" rows="6" required></textarea>
+          <textarea id="message" name="message" class="w-full p-3 border border-gray-300 rounded-lg focus:outline-none focus:ring-2 focus:ring-blue-500" rows="6" placeholder="Write your cover letter" required></textarea>
         </div>
         <div>
-          <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-all duration-300">Submit Application</button>
+          <button type="submit" class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition-all">
+            Submit Application
+          </button>
         </div>
       </form>
     </div>
@@ -112,24 +98,24 @@
   <section id="contact" class="py-16 bg-gray-100">
     <div class="container mx-auto text-center">
       <h3 class="text-3xl font-bold mb-6">Contact Us</h3>
-      <div class="space-y-4">
-        <p class="text-lg text-gray-600">For any inquiries or to get in touch with our team, feel free to reach out through the following channels:</p>
-        <div class="space-x-6">
-          <a href="mailto:info@jovian.com" class="text-blue-600 hover:underline">Email</a>
-          <a href="https://www.linkedin.com/company/jovian" target="_blank" class="text-blue-600 hover:underline">LinkedIn</a>
-          <a href="https://twitter.com/jovian" target="_blank" class="text-blue-600 hover:underline">Twitter</a>
-        </div>
+      <p class="text-lg text-gray-600 max-w-xl mx-auto">
+        For inquiries or to get in touch with our team, email us or follow us on LinkedIn or Twitter.
+      </p>
+      <div class="mt-6 space-x-4">
+        <a href="mailto:info@jovian.com" class="text-blue-600 hover:underline">Email</a>
+        <a href="https://linkedin.com/company/jovian" target="_blank" class="text-blue-600 hover:underline">LinkedIn</a>
+        <a href="https://twitter.com/jovian" target="_blank" class="text-blue-600 hover:underline">Twitter</a>
       </div>
     </div>
   </section>
 
   <!-- Footer -->
   <footer class="bg-blue-600 text-white py-6">
-    <div class="container mx-auto flex flex-col md:flex-row justify-between items-center">
-      <p class="text-center md:text-left">&copy; 2025 Jovian Careers. All rights reserved.</p>
-      <div class="flex space-x-4 mt-4 md:mt-0">
-        <a href="#" class="hover:text-gray-200 transition-all">Privacy Policy</a>
-        <a href="#" class="hover:text-gray-200 transition-all">Terms of Service</a>
+    <div class="container mx-auto text-center md:text-left flex flex-col md:flex-row justify-between">
+      <p>&copy; 2025 Jovian Careers. All rights reserved.</p>
+      <div class="space-x-4">
+        <a href="#" class="hover:text-gray-200">Privacy Policy</a>
+        <a href="#" class="hover:text-gray-200">Terms of Service</a>
       </div>
     </div>
   </footer>
