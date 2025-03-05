@@ -44,11 +44,7 @@
   <!-- About Section -->
   <section id="about" class="py-16 bg-gray-50">
     <div class="container mx-auto text-center">
-      <motion.div 
-        initial={{ opacity: 0, y: 50 }} 
-        animate={{ opacity: 1, y: 0 }} 
-        transition={{ duration: 0.8, ease: "easeOut" }}
-      >
+      <div class="about-content" data-aos="fade-up">
         <h3 class="text-4xl font-extrabold text-gray-800 mb-4 tracking-wide">
           About <span class="text-blue-600">Jovian Careers</span>
         </h3>
@@ -58,13 +54,17 @@
           for your first job or a new opportunity, we offer a diverse range of career 
           options tailored to your goals.
         </p>
-      </motion.div>
+      </div>
     </div>
   </section>
 
-  <!-- Include Framer Motion for animations -->
-  <script type="module">
-    import { motion } from "https://cdn.skypack.dev/framer-motion";
+  <!-- Include AOS for animations -->
+  <script src="https://unpkg.com/aos@next/dist/aos.js"></script>
+  <link rel="stylesheet" href="https://unpkg.com/aos@next/dist/aos.css" />
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      AOS.init();
+    });
   </script>
 
 
