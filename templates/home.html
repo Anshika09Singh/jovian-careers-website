@@ -44,12 +44,29 @@
   <!-- About Section -->
   <section id="about" class="py-16 bg-gray-50">
     <div class="container mx-auto text-center">
-      <h3 class="text-3xl font-bold mb-6">About Jovian Careers</h3>
-      <p class="text-lg text-gray-600 max-w-2xl mx-auto">
-        Jovian Careers is a platform designed to connect talented individuals with top companies worldwide. Whether you're looking for your first job or a new opportunity, we offer an array of career options tailored to your goals.
-      </p>
+      <motion.div 
+        initial={{ opacity: 0, y: 50 }} 
+        animate={{ opacity: 1, y: 0 }} 
+        transition={{ duration: 0.8, ease: "easeOut" }}
+      >
+        <h3 class="text-4xl font-extrabold text-gray-800 mb-4 tracking-wide">
+          About <span class="text-blue-600">Jovian Careers</span>
+        </h3>
+        <p class="text-lg text-gray-600 max-w-2xl mx-auto leading-relaxed">
+          <span class="font-semibold text-gray-700">Jovian Careers</span> is a platform designed to connect 
+          talented individuals with top companies worldwide. Whether you're looking 
+          for your first job or a new opportunity, we offer a diverse range of career 
+          options tailored to your goals.
+        </p>
+      </motion.div>
     </div>
   </section>
+
+  <!-- Include Framer Motion for animations -->
+  <script type="module">
+    import { motion } from "https://cdn.skypack.dev/framer-motion";
+  </script>
+
 
   <!-- Jobs Section -->
   <section id="jobs" class="py-16 bg-gray-100">
